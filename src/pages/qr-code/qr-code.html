@@ -1,0 +1,34 @@
+<!--
+  Generated template for the QrCodePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>QR Code</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-segment class="SwipedTabs-tabs" [(ngModel)]="regCategory" color="primary">
+		<ion-segment-button value="paytm" >Paytm</ion-segment-button>
+		<ion-segment-button value="gpay" >Google Pay</ion-segment-button>
+	</ion-segment>
+
+	<div [ngSwitch]="regCategory">
+		<ion-item *ngSwitchCase="'paytm'">	
+			<ion-card>
+				<img src="../../assets/imgs/paytm.jpeg"/>
+			</ion-card>
+		</ion-item>
+		<ion-item *ngSwitchCase="'gpay'">
+			<ion-card>
+				<img src="../../assets/imgs/gpay.jpeg"/>
+			</ion-card>
+		</ion-item>
+	</div>
+</ion-content>

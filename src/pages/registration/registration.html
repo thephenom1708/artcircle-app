@@ -1,0 +1,354 @@
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>Registration</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+<ion-content padding *ngIf="user">
+	
+	<ion-segment class="SwipedTabs-tabs" [(ngModel)]="regCategory" color="primary">
+		<ion-segment-button value="solo" ><b>Solo</b></ion-segment-button>
+		<ion-segment-button value="duet" ><b>Duet</b></ion-segment-button>
+		<ion-segment-button value="group" ><b>Group</b></ion-segment-button>
+	</ion-segment>
+
+	<div id='indicator' class="SwipedTabs-indicatorSegment"></div>
+	<!--<ion-slides #SwipedTabsSlider>
+		<ion-slide>-->
+
+	<div [ngSwitch]="regCategory">
+		<ion-list *ngSwitchCase="'solo'">
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="man" item-start class="text-primary"></ion-icon>
+					YUVA ID
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="yuvaId" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="person" item-start class="text-primary"></ion-icon>
+					Full Name
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="name" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="mail" item-start class="text-primary"></ion-icon>
+					Email
+				</ion-label>
+				<ion-input type="email" [(ngModel)]="email" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="call" item-start class="text-primary"></ion-icon>
+					Contact No
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="mobile" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="school" item-start class="text-primary"></ion-icon>
+					College
+				</ion-label>
+				<ion-select [(ngModel)]="college">
+					<ion-option *ngFor="let college of collegeList" value="{{ college }}">{{ college }}</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="medal" item-start class="text-primary"></ion-icon>
+					Event
+				</ion-label>
+				<ion-select [(ngModel)]="event">
+					<ion-option *ngFor="let event of soloEventList" value="{{ event }}">{{ event }}</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="card" item-start class="text-primary"></ion-icon>
+					Payment Mode
+				</ion-label>
+				<ion-select [(ngModel)]="payMode">
+					<ion-option value="paytm">Paytm</ion-option>
+					<ion-option value="googlePay">Google Pay</ion-option>
+					<ion-option value="cash">Cash</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="pricetag" item-start class="text-primary"></ion-icon>
+					Total Fee
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="totalFee" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="cash" item-start class="text-primary"></ion-icon>
+					Paid Fee
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="paidFee" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="contact" item-start class="text-primary"></ion-icon>
+					Entry Taken By...
+				</ion-label>
+				<ion-input type="text"[(ngModel)]="entryTakenBy" ></ion-input>
+			</ion-item>
+			<br>
+			<div>
+				<button ion-button icon-start block color="dark" [disabled]="disabled" tappable (click)="addNewEntry(newEntry)">
+					<ion-icon name="log-in"></ion-icon>Proceed
+				</button>
+			</div>
+		</ion-list>
+		<!--</ion-slide>-->
+
+		<ion-list *ngSwitchCase="'duet'">
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="man" item-start class="text-primary"></ion-icon>
+					YUVA ID
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="yuvaId" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="person" item-start class="text-primary"></ion-icon>
+					Full Name
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="name" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="mail" item-start class="text-primary"></ion-icon>
+					Email
+				</ion-label>
+				<ion-input type="email" [(ngModel)]="email" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="call" item-start class="text-primary"></ion-icon>
+					Contact No
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="mobile" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="school" item-start class="text-primary"></ion-icon>
+					College
+				</ion-label>
+				<ion-select [(ngModel)]="college">
+					<ion-option *ngFor="let college of collegeList" value="{{ college }}">{{ college }}</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="medal" item-start class="text-primary"></ion-icon>
+					Event
+				</ion-label>
+				<ion-select [(ngModel)]="event">
+					<ion-option *ngFor="let event of duetEventList" value="{{ event }}">{{ event }}</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="card" item-start class="text-primary"></ion-icon>
+					Payment Mode
+				</ion-label>
+				<ion-select [(ngModel)]="payMode">
+					<ion-option value="paytm">Paytm</ion-option>
+					<ion-option value="googlePay">Google Pay</ion-option>
+					<ion-option value="cash">Cash</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="pricetag" item-start class="text-primary"></ion-icon>
+					Total Fee
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="totalFee" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="cash" item-start class="text-primary"></ion-icon>
+					Paid Fee
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="paidFee" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="contact" item-start class="text-primary"></ion-icon>
+					Entry Taken By...
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="entryTakenBy" ></ion-input>
+			</ion-item>
+			<br>
+			<div>
+				<button ion-button icon-start block color="dark" tappable (click)="addNewEntry(newEntry)">
+					<ion-icon name="log-in"></ion-icon>Proceed
+				</button>
+			</div>
+		</ion-list>
+
+		<!--<ion-slide>-->
+		<ion-list *ngSwitchCase="'group'">
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="man" item-start class="text-primary"></ion-icon>
+					YUVA ID
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="yuvaId" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="person" item-start class="text-primary"></ion-icon>
+					Full Name
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="name" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="mail" item-start class="text-primary"></ion-icon>
+					Email
+				</ion-label>
+				<ion-input type="email" [(ngModel)]="email" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="call" item-start class="text-primary"></ion-icon>
+					Contact No
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="mobile" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="school" item-start class="text-primary"></ion-icon>
+					College
+				</ion-label>
+				<ion-select [(ngModel)]="college">
+					<ion-option *ngFor="let college of collegeList" value="{{ college }}">{{ college }}</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="medal" item-start class="text-primary"></ion-icon>
+					Event
+				</ion-label>
+				<ion-select [(ngModel)]="event">
+					<ion-option *ngFor="let event of groupEventList" value="{{ event }}">{{ event }}</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="card" item-start class="text-primary"></ion-icon>
+					Payment Mode
+				</ion-label>
+				<ion-select [(ngModel)]="payMode">
+					<ion-option value="paytm">Paytm</ion-option>
+					<ion-option value="googlePay">Google Pay</ion-option>
+					<ion-option value="cash">Cash</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="pricetag" item-start class="text-primary"></ion-icon>
+					Total Fee
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="totalFee" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="cash" item-start class="text-primary"></ion-icon>
+					Paid Fee
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="paidFee" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>
+					<ion-icon name="contact" item-start class="text-primary"></ion-icon>
+					Entry Taken By...
+				</ion-label>
+				<ion-input type="text" [(ngModel)]="entryTakenBy" ></ion-input>
+			</ion-item>
+			<br>
+			<div>
+				<button ion-button icon-start block color="dark" tappable (click)="addNewEntry(newEntry)">
+					<ion-icon name="log-in"></ion-icon>Proceed
+				</button>
+			</div>
+		</ion-list>
+	</div>	
+</ion-content>
+
+
+
+
+
+<!--
+<ion-option value="WCE Sangli">WCE Sangli</ion-option>
+						<ion-option value="Willingdon Sangli">Willingdon Sangli</ion-option>
+						<ion-option value="Nanasaheb Mahadik Polytechnic">Nanasaheb Mahadik Polytechnic</ion-option>
+						<ion-option value="Miraj Govt. College of Pharmacy">Miraj Govt. College of Pharmacy</ion-option>
+						<ion-option value="Appasaheb Birnale College of Pharmacy">Appasaheb Birnale College of Pharmacy</ion-option>
+						<ion-option value="PVPIT Budhgaon">PVPIT Budhgaon</ion-option>
+						<ion-option value="Ganpatrao Arwade College of Commerce">Ganpatrao Arwade College of Commerce</ion-option>
+						<ion-option value="Dental College & Hospital">Dental College & hospital</ion-option>
+						<ion-option value="JJ Magdum">JJ Magdum</ion-option>
+						<ion-option value="Shri Ambabai Talim Sansthas, COE Sangli">Shri Ambabai Talim Sansthas, COE Sangli</ion-option>
+						<ion-option value="DKTE Ichalkaranji">DKTE Ichalkaranji</ion-option>
+						<ion-option value="SGI Kolhapur">SGI Kolhapur</ion-option>
+						<ion-option value="Govt. Medical College Sangli">Govt. Medical College Sangli</ion-option>
+						<ion-option value="Anandrao Balwantrao Naik College Shirala">Anandrao Balwantrao Naik College Shirala</ion-option>
+						<ion-option value="Dr. Vasantrao Patil Mahavidyalaya Tasgaon">Dr. Vasantrao Patil Mahavidyalaya Tasgaon</ion-option>
+						<ion-option value="Women's Polytechnic Tasgaon">Women's Polytechnic Tasgaon</ion-option>
+						<ion-option value="Kasturbai Walchand College Sangli">Kasturbai Walchand College Sangli</ion-option>
+						<ion-option value="Arts & Commerce College Kasegaon">Arts & Commerce College Kasegaon</ion-option>
+						<ion-option value="Vitthal Lahane Polytechnic Sangli">Vitthal Lahane Polytechnic Sangli</ion-option>
+						<ion-option value="Jadhav Polytechnic Bhose">Jadhav Polytechnic Bhose</ion-option>
+						<ion-option value="Patangrao Kadam Mahavidyalaya Sangli">Patangrao Kadam Mahavidyalaya Sangli</ion-option>
+						<ion-option value="Atpadi College">Atpadi College</ion-option>
+						<ion-option value="Dange College Ashta">Dange College Ashta</ion-option>
+						<ion-option value="Sanjay Bhokre Sangli">Sanjay Bhokre Sangli</ion-option>
+						<ion-option value="Bharti Vidyapeeth, Sangli">Bharati Vidyapeeth, Sangli</ion-option>
+						<ion-option value="RIT Islampur">RIT Islampur</ion-option>
+						<ion-option value="Latthe Polytechnic">Latthe Polytechnic</ion-option>
+						<ion-option value="Govt. Polytechnic Miraj">Govt. Polytechnic Miraj</ion-option>
+						<ion-option value="Yashwantrao Chavan A & C College, Sangli">Yashwantrao Chavan College Sangli</ion-option>
+						<ion-option value="Bharati Vidyapeeth Polytechnic Palus">Bharati Vidyapeeth Polytechnic Palus</ion-option>
+						<ion-option value="Shivajirao Deshmukh Institute">Shivajirao Deshmukh Institute</ion-option>
+						<ion-option value="Shantiniketan Polytechnic Sangli">Shantiniketan Polytechnic Sangli</ion-option>
+						<ion-option value="KE Society College of Engineering Sangli">KE Society College of Engineering Sangli</ion-option>
+						<ion-option value="Govt. Medical College Miraj">Govt. Medical College Miraj</ion-option>
+						<ion-option value="Polytechnic Palus">Polytechnic Palus</ion-option>
+						<ion-option value="Adarsh Institute of Technology, Vita">Adarsh Institute of Technology, Vita</ion-option>
+						<ion-option value="Nanasaheb Mahadik COE, Walwa">Nanasaheb Mahadik COE, Walwa</ion-option>
+						<ion-option value="Appasaheb Birnale Sangli">Appasaheb Birnale Sangli</ion-option>
+						<ion-option value="Balvant College, Khanpur">Balvant College, Khanpur</ion-option>
+						<ion-option value="Balvant College, Vita">Balvant College, Vita</ion-option>
+						<ion-option value="Yashwantrao Chavan A & C College, Walwa">Yashwantrao Chavan A & C College, Walwa</ion-option>
+						<ion-option value="Karmavir Bhaurao Patil COE, Satara">Karmavir Bhaurao Patil COE, Satara</ion-option>
+						<ion-option value="KIT Kolhapur">KIT Kolhapur</ion-option>
+						<ion-option value="DY Patil COE, Kolhapur">DY Patil COE, Kolhapur</ion-option>
+						<ion-option value="DY Patil Polytechnic, Kolhapur">DY Patil Polytechnic, Kolhapur</ion-option>
+						<ion-option value="Nanasaheb Mahadik COE, Sangli">Nanasaheb Mahadik COE, Sangli</ion-option>
+						<ion-option value="Bharati Vidyapeeth COE, Kolhapur">Bharati Vidyapeeth COE, Kolhapur</ion-option>
+						<ion-option value="Sanjeevan Engg & Technology, Kolhapur">Sanjeevan Engg & Technology, Kolhapur</ion-option>
+						<ion-option value="Sharad Institute of Technology, Kolhapur">Sharad Institute of Technology, Kolhapur</ion-option>
+						<ion-option value="Tatyasaheb Kore COE, Kolhapur">Tatyasaheb Kore COE, Kolhapur</ion-option>
+						<ion-option value="Ashokrao Mane Polytechnic, Kolhapur">Ashokrao Mane Polytechnic, Kolhapur</ion-option>
+						<ion-option value="Kolhapur Technology Institute, Kolhapur">Kolhapur Technology Institute, Kolhapur</ion-option>
+						<ion-option value="New Polytechnic College, Kolhapur">New Polytechnic College, Kolhapur</ion-option>
+						<ion-option value="Vivekanand college Kolhapur">Vivekanand college Kolhapur</ion-option>
+						<ion-option value="Tatyasaheb Kore Institute of Engg & Technology, Kolhapur">Tatyasaheb Kore Institute of Engg & Technology, Kolhapur</ion-option>
+						<ion-option value="College of Engineering, Kolhapur">College of Engineering, Kolhapur</ion-option>
+						<ion-option value="Dr. Daulatrao Aher COE, Karad">Dr. Daulatrao Aher COE, Karad</ion-option>
+						<ion-option value="Govt. College of Engineering, Karad">Govt. College of Engineering, Karad</ion-option>
+						<ion-option value="Shree Santkrupa Institue of Engg & Technology, Karad">Shree Santkrupa Institue of Engg & Technology, Karad</ion-option>
+						<ion-option value="Yashwantrao Mohite Institue of Management, Karad">Yashwantrao Mohite Institue of Management, Karad</ion-option>
+						<ion-option value="Govt. College of Pharmacy, Karad">Govt. College of Pharmacy, Karad</ion-option>
+					</ion-select>
+				-->

@@ -1,0 +1,81 @@
+<ion-header>
+
+	<ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+		<ion-title>REGISTER</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+<!--
+<ion-content padding center text-center>
+	<ion-list>
+        <ion-item>
+            <ion-input type="email" placeholder="Email ID" [(ngModel)]="email" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="password" placeholder="Password" [(ngModel)]="password" ></ion-input>
+		</ion-item>
+		<ion-item>
+            <ion-input type="password" placeholder="Confirm Password" [(ngModel)]="confirmPassword" ></ion-input>
+        </ion-item>
+    </ion-list>
+    
+    <button ion-button full (click)="register()" >Register</button>
+</ion-content>
+-->
+
+<ion-content padding class="animated fadeIn login auth-page">
+	<div class="login-content">
+
+    <!-- Logo -->
+    <div padding text-center>
+    	<div class="logo"></div>
+      	<h2 ion-text class="text-primary">
+        <strong>Register Here</strong>
+      	</h2>
+    </div>
+
+    <!-- Login form -->
+    <ion-item>
+      	<ion-label floating>
+        <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+        Email
+      	</ion-label>
+      	<ion-input type="email" [(ngModel)]="email"></ion-input>
+	</ion-item>
+	
+	<ion-item>
+		<ion-label floating>
+	  <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+	  Password
+		</ion-label>
+		<ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+    <ion-item>
+      	<ion-label floating>
+        <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+        Password
+      	</ion-label>
+      	<ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
+    </ion-item>
+
+      <div>
+        <button ion-button icon-start block color="dark" tappable (click)="register()">
+        	<ion-icon name="log-in"></ion-icon>
+          	SIGN UP
+        </button>
+      </div>
+
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      	<span ion-text color="primary" tappable (click)="goLogin()">Already have an account?</span>
+    </div>
+
+  </div>
+</ion-content>
+

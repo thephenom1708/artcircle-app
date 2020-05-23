@@ -1,0 +1,73 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Entry List: {{ title }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="cards-bg" *ngIf="user">
+	<ion-list *ngIf="type == 'event'">
+		<div class="text" *ngFor="let entry of allEntries | async">
+		<ion-item *ngIf="event == entry.event">
+			<ion-card class="cards-list-demo" >
+				<ion-card-header>
+					<ion-grid>
+						<ion-row>
+							<ion-col><ion-badge color="success">{{ entry.yuvaId }}</ion-badge></ion-col>
+							<ion-col><ion-badge color="dark">{{ entry.date }}</ion-badge></ion-col>
+							<ion-col *ngIf="userEmail == 'kmendki98@gmail.com'" tappable (click)="editEntry(entry.yuvaId)">
+								<ion-icon name="create"></ion-icon>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</ion-card-header>
+				<ion-list>
+					<ion-item><b>Name: </b>{{entry.name}}</ion-item>
+					<ion-item><b>Email: </b>{{entry.email}}</ion-item>
+					<ion-item><b>Mobile: </b>{{entry.mobile}}</ion-item>
+					<ion-item><b>College: </b>{{entry.college}}</ion-item>
+					<ion-item><b>Type: </b>{{entry.type}}</ion-item>
+					<ion-item><b>Payment Mode: </b>{{entry.payMode}}</ion-item>
+					<ion-item><b>Total Fee: </b>{{entry.totalFee}}</ion-item>
+					<ion-item><b>Paid Fee: </b>{{entry.paidFee}}</ion-item>
+					<ion-item><b>Entry Taken By: </b>{{ entry.entryTakenBy }}</ion-item>
+				</ion-list>
+			</ion-card>
+		</ion-item>
+		</div>
+	</ion-list>
+
+	<ion-list *ngIf="type == 'college'">
+		<div class="text" *ngFor="let entry of allEntries | async">
+		<ion-item *ngIf="college == entry.college">
+			<ion-card class="cards-list-demo" >
+				<ion-card-header>
+					<ion-grid>
+						<ion-row>
+							<ion-col><ion-badge color="success">{{ entry.yuvaId }}</ion-badge></ion-col>
+							<ion-col><ion-badge color="dark">{{ entry.date }}</ion-badge></ion-col>
+							<ion-col *ngIf="userEmail == 'kmendki98@gmail.com'" tappable (click)="editEntry(entry.yuvaId)">
+								<ion-icon name="create"></ion-icon>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</ion-card-header>
+				<ion-list>
+					<ion-item><b>Name: </b>{{entry.name}}</ion-item>
+					<ion-item><b>Email: </b>{{entry.email}}</ion-item>
+					<ion-item><b>Mobile: </b>{{entry.mobile}}</ion-item>
+					<ion-item><b>College: </b>{{entry.college}}</ion-item>
+					<ion-item><b>Event: </b>{{entry.event}}</ion-item>
+					<ion-item><b>Type: </b>{{entry.type}}</ion-item>
+					<ion-item><b>Payment Mode: </b>{{entry.payMode}}</ion-item>
+					<ion-item><b>Total Fee: </b>{{entry.totalFee}}</ion-item>
+					<ion-item><b>Paid Fee: </b>{{entry.paidFee}}</ion-item>
+					<ion-item><b>Entry Taken By: </b>{{ entry.entryTakenBy }}</ion-item>
+				</ion-list>
+			</ion-card>
+		</ion-item>
+		</div>
+	</ion-list>
+</ion-content>

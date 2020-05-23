@@ -1,14 +1,53 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>LOGIN</ion-title>
+    </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding class="animated fadeIn login auth-page">
+    <div class="login-content">
+  
+      
+      <div padding-horizontal text-center class="animated fadeInDown">
+        <div class="logo"></div>
+        <h2 ion-text class="text-primary">
+          <strong>Login Here</strong>
+        </h2>
+      </div>
+  
+        
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+            Email
+          </ion-label>
+          <ion-input type="email" [(ngModel)]="email"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+            Password
+          </ion-label>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+  
+      <p text-right ion-text color="secondary" tappable (click)="forgotPass()"><strong>Forgot Password?</strong></p>
+  
+      <div>
+        <button ion-button icon-start block color="dark" tappable (click)="login()">
+          <ion-icon name="log-in"></ion-icon>
+          SIGN IN
+        </button>
+      </div>
+  
+  
+      <div text-center margin-top>
+        <span ion-text color="secondary" tappable (click)="goRegister()">New here? <strong>Sign up</strong></span>
+      </div>
+  
+    </div>
 </ion-content>

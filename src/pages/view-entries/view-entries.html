@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>View Entries</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding *ngIf="user">
+	<ion-segment class="SwipedTabs-tabs" [(ngModel)]="filterType" color="primary">
+		<ion-segment-button value="eventwise" (ionSelect)="performSegmentActivity('event')"><b>Eventwise</b></ion-segment-button>
+		<ion-segment-button value="collegewise" (ionSelect)="performSegmentActivity('college')"><b>Collegewise</b></ion-segment-button>
+	</ion-segment>
+
+	<div id='indicator' class="SwipedTabs-indicatorSegment"></div>
+
+	<div [ngSwitch]="filterType">
+		<ion-list *ngSwitchCase="'eventwise'">
+			<ion-item *ngFor="let event of eventList; let i = index">
+				<h2>{{ event }}</h2>
+				<ion-badge id="{{ i }}"></ion-badge>
+				<button ion-button clear item-end (click)="getEventEntries(event)">view Entries</button>
+			</ion-item>
+		</ion-list>
+
+		<ion-list *ngSwitchCase="'collegewise'">
+			<ion-item *ngFor="let college of collegeList; let i = index">
+				<h2>{{ college }}</h2>
+				<ion-badge id="{{ i }}{{ i }}"></ion-badge>
+				<button ion-button clear item-end (click)="getCollegeEntries(college)">view Entries</button>
+			</ion-item>
+		</ion-list>
+	</div>
+</ion-content>

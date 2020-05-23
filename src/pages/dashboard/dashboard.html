@@ -1,0 +1,43 @@
+<ion-header>
+  	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>ArtCircle</ion-title>
+  	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding center class="card-background-page" *ngIf="user">
+	<ion-grid>
+		<ion-row>
+			<ion-col col-6>
+				<ion-card tappable (click)="goEvents">
+					<img src="../../assets/imgs/events.png"/>
+					<div class="card-title">Events</div>
+				  </ion-card>
+			</ion-col>
+			<ion-col col-6>
+				<ion-card tappable (click)="goRegistration()">
+					<img src="../../assets/imgs/registration.png"/>
+					<div class="card-title">Registrations</div>
+				  </ion-card>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col col-6>
+				<ion-card tappable (click)="goEntries()">
+					<img src="../../assets/imgs/entries.png"/>
+					<div class="card-title">Total Entries</div>
+				  </ion-card>
+			</ion-col>
+			<ion-col col-6>
+				<ion-card tappable>
+					<img src="../../assets/imgs/comingSoon.jpg">
+					<div class="card-title">Coming Soon</div>
+				  </ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>
